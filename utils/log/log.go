@@ -32,13 +32,13 @@ func LumberJackLogger(filePath string, maxSize int, maxBackups int, maxAge int) 
 }
 
 func InitLogToStdoutDebug() {
-	logrus.SetFormatter(&logrus.TextFormatter{ForceColors: true})
+	logrus.SetFormatter(&logrus.TextFormatter{ForceColors: true, FullTimestamp: true, TimestampFormat: "2006-01-02 15:04:05"})
 	logrus.SetOutput(os.Stdout)
 	logrus.SetLevel(logrus.DebugLevel)
 }
 
 func InitLogToStdout() {
-	logrus.SetFormatter(&logrus.TextFormatter{})
+	logrus.SetFormatter(&logrus.TextFormatter{ForceColors: true, FullTimestamp: true, TimestampFormat: "2006-01-02 15:04:05"})
 	logrus.SetOutput(os.Stdout)
 	logrus.SetLevel(logrus.WarnLevel)
 }
