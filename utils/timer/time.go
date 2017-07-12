@@ -1,6 +1,7 @@
 package timer
 
 import (
+	"fmt"
 	"log"
 	"strconv"
 	"strings"
@@ -61,8 +62,8 @@ func AlertTime(start string, end string, strday string, now time.Time) bool {
 		return false
 	}
 
-	currHour := now.Hour()
-	currMinute := now.Minute()
+	//currHour := now.Hour()
+	//currMinute := now.Minute()
 	currDay := now.Weekday().String()
 
 	math := false
@@ -79,36 +80,19 @@ func AlertTime(start string, end string, strday string, now time.Time) bool {
 		return false
 	}
 
-	if startHour <= currHour && endHour >= currHour {
+	sts := fmt.Sprintf("%04d-%02d-%02d %02d:%02d:00", now.Year(), now.Month(), now.Day(), startHour, startMinute)
+	ets := fmt.Sprintf("%04d-%02d-%02d %02d:%02d:00", now.Year(), now.Month(), now.Day(), endHour, endMinute)
 
-		if startHour == currHour {
-			//判断分钟
-			if startMinute <= currMinute {
-				log.Println("同开始时间时间到:", start, end, day)
-				//continue
-			} else {
-				log.Println("1不在时间段:", start, end, day)
-				return false
-			}
-		} else if endHour == currHour {
-			if endMinute >= currMinute {
-				log.Println("同结束时间，时间到:", start, end, day)
-				//continue
-			} else {
-				log.Println("2不在时间段:", start, end, day)
-				return false
-			}
-		} else {
-			log.Println("else 时间到:", start, end, day)
-			//continue
-		}
+	su := TimeStringToTime(sts).Unix()
+	eu := TimeStringToTime(ets).Unix()
 
-	} else {
-		log.Println("3不在时间段:", start, end, day, startHour, currHour, endHour, currHour)
-		return false
+	if su <= now.Unix() && eu >= now.Unix() {
+		return true
 	}
 
-	return true
+	log.Println("no match", su, eu, now.Unix(), sts, ets)
+
+	return false
 }
 func stringtoArrayInt(str string) (arrayInt []int64) {
 
@@ -127,4 +111,12 @@ func stringtoArrayInt(str string) (arrayInt []int64) {
 	}
 
 	return
+}
+
+func TimeStringToTime(t string) time.Time {
+	//	toBeCharge := "2015-01-01 00:00:00"
+	layout := "2006-01-02 15:04:05"
+	loc, _ := time.LoadLocation("Local")
+	ct, _ := time.ParseInLocation(layout, t, loc)
+	return ct
 }

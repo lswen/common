@@ -21,3 +21,21 @@ func Test_timeAlertFail(t *testing.T) {
 		t.Fatal("error alert time")
 	}
 }
+
+func Test_timeAlertFail1(t *testing.T) {
+	tn := TimeStringToTime("2015-01-01 00:09:00")
+	b := AlertTime("00:00", "00:05", "0,1,2,3,4,5,6", tn)
+
+	if b == true {
+		t.Fatal("error alert time")
+	}
+}
+
+func Test_timeAlertOk1(t *testing.T) {
+	tn := TimeStringToTime("2015-01-01 00:09:00")
+	b := AlertTime("00:00", "10:00", "0,1,2,3,4,5,6", tn)
+
+	if b == false {
+		t.Fatal("error alert time")
+	}
+}
