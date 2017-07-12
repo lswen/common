@@ -1,4 +1,4 @@
-package time
+package timer
 
 import (
 	"log"
@@ -17,7 +17,9 @@ var DAYS = map[string]int64{
 	"Saturday":  6,
 }
 
-func AlertTime(start string, end string, day []int64, now time.Time) bool {
+func AlertTime(start string, end string, strday string, now time.Time) bool {
+
+	day := stringtoArrayInt(strday)
 
 	if start == "" || end == "" || len(day) == 0 {
 		return false
