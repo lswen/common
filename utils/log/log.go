@@ -1,7 +1,6 @@
 package log
 
 import (
-	"github.com/Sirupsen/logrus"
 	"github.com/lswen/common/utils/golog"
 )
 
@@ -34,67 +33,67 @@ func Warn(args ...interface{}) {
 
 // Warning logs a message at level Warn on the standard logger.
 func Warning(args ...interface{}) {
-	logrus.Warnln(args...)
+	log.Warnln(args...)
 }
 
 // Error logs a message at level Error on the standard logger.
 func Error(args ...interface{}) {
-	logrus.Error(args...)
+	log.Errorln(args...)
 }
 
 // Panic logs a message at level Panic on the standard logger.
 func Panic(args ...interface{}) {
-	logrus.Panic(args...)
+	log.Errorln(args...)
 }
 
 // Fatal logs a message at level Fatal on the standard logger.
 func Fatal(args ...interface{}) {
-	logrus.Fatal(args...)
+	log.Errorln(args...)
 }
 
 // Debugf logs a message at level Debug on the standard logger.
 func Debugf(format string, args ...interface{}) {
-	logrus.Debugf(format, args...)
+	log.Debugf(format, args...)
 }
 
 // Printf logs a message at level Info on the standard logger.
 func Printf(format string, args ...interface{}) {
-	logrus.Printf(format, args...)
+	log.Infof(format, args...)
 }
 
 // Infof logs a message at level Info on the standard logger.
 func Infof(format string, args ...interface{}) {
-	logrus.Infof(format, args...)
+	log.Infof(format, args...)
 }
 
 // Warnf logs a message at level Warn on the standard logger.
 func Warnf(format string, args ...interface{}) {
-	logrus.Warnf(format, args...)
+	log.Warnf(format, args...)
 }
 
 // Warningf logs a message at level Warn on the standard logger.
 func Warningf(format string, args ...interface{}) {
-	logrus.Warningf(format, args...)
+	log.Warnf(format, args...)
 }
 
 // Errorf logs a message at level Error on the standard logger.
 func Errorf(format string, args ...interface{}) {
-	logrus.Errorf(format, args...)
+	log.Errorf(format, args...)
 }
 
 // Panicf logs a message at level Panic on the standard logger.
 func Panicf(format string, args ...interface{}) {
-	logrus.Panicf(format, args...)
+	log.Errorf(format, args...)
 }
 
 // Fatalf logs a message at level Fatal on the standard logger.
 func Fatalf(format string, args ...interface{}) {
-	logrus.Fatalf(format, args...)
+	log.Fatalf(format, args...)
 }
 
 // Debugln logs a message at level Debug on the standard logger.
 func Debugln(args ...interface{}) {
-	logrus.Debugln(args...)
+	log.Debugln(args...)
 }
 
 // Println logs a message at level Info on the standard logger.
